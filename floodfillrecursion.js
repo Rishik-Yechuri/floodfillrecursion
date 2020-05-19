@@ -73,6 +73,3 @@ function fillArray(array, y, x) {
     }
     return array
 }
-
-
-//
