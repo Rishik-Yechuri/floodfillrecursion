@@ -12,7 +12,6 @@ var r1 = readline.createInterface({
 const question1 = () => {
     return new Promise((resolve, reject) => {
         r1.question(questionToAsk, (answer) => {
-            //console.log(answer)
             input = answer
             resolve()
         })
@@ -37,13 +36,6 @@ const main = async () => {
             a[y][x] = input
         }
     }
-    /*for (let y = 0; y < height; y++) {
-        for (let x = 0; x < width; x++) {
-            process.stdout.write(a[y][x] + " ")
-        }
-        console.log("")
-    }*/
-
     let arraytoreturn = fillArray(a, yLocation,xLocation)
     console.log(arraytoreturn)
     r1.close()
@@ -55,7 +47,6 @@ function fillArray(array, y, x) {
     if (x + 1 < array[0].length) {
         if (array[y][x + 1] !== 'b' && array[y][x+1] !== 'w') {
             array[y][x + 1] = "w"
-            filled = false
             array = fillArray(array, y, x + 1)
         }
     }
@@ -65,21 +56,18 @@ function fillArray(array, y, x) {
         if (array[y][x - 1] !== 'b' && array[y][x - 1] !== 'w') {
             console.log("left")
             array[y][x - 1] = "w"
-            filled = false
             array = fillArray(array, y, x - 1)
         }
     }
     if (y + 1 < array.length) {
         if (array[y + 1][x] !== 'b' && array[y + 1][x] !== 'w') {
             array[y + 1][x] = 'w'
-            filled = false
             array = fillArray(array, y + 1, x)
         }
     }
     if (y - 1 > -1) {
         if (array[y - 1][x] !== 'b' && array[y - 1][x] !== 'w') {
             array[y - 1][x] = "w"
-            filled = false
             array = fillArray(array, y - 1, x)
         }
     }
